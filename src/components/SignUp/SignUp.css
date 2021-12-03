@@ -1,0 +1,25 @@
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    border:2px solid black;
+    width: 600px;
+    height: auto;
+    border-radius: 800px/150px;
+    background-color:#e70012;
+}
+input {
+    border-radius: 800px/1505px;
+    height: 30px;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 15px;
+}
+button {
+    height: 40px;
+    border-radius:800px/150px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}

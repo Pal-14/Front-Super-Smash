@@ -1,0 +1,177 @@
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* background: aqua; */
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.containerCardFeed {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+}
+.titleh1,
+.titleh4 {
+  color: white;
+  font-weight: bolder;
+  font-size: 25px;
+  height: 89px;
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  width: 20%;
+}
+h2 {
+  font-size: 40px;
+}
+.titleFeed {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  top: 300px;
+  width: 100%;
+  color: rgb(255, 255, 255);
+  font-size: 60px;
+  font: normal normal bold 50px/60px Rubik;
+  color: #ffffff;
+  opacity: 1;
+}
+.imgTwo {
+  border-radius: 25px;
+  height: 50px;
+  left: 33px;
+}
+
+.cardFeed {
+  background-color: rgb(242, 242, 242);
+  width: 700px;
+  height: auto;
+  padding: 2%;
+  margin: 2%;
+  border-radius: 5px;
+  position: relative;
+
+  right: 50px;
+}
+/* .cardPartOne, .cardPartTwo, .cardPartThree {
+    border: 1px solid red;
+   
+} */
+.cardPartOne {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 2px solid white;
+  border-width: 50%;
+  padding: 2%;
+}
+span {
+  text-align: left;
+  font: normal normal bold 14px/17px Rubik;
+  letter-spacing: 0.7px;
+  color: #e70012;
+  text-transform: uppercase;
+  opacity: 1;
+}
+.cardPartTwo {
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+  font: normal normal normal 11px/17px Rubik;
+  letter-spacing: 0px;
+  color: #626262;
+  opacity: 1;
+}
+.cardPartThree {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 2%;
+}
+.commentButton {
+  background-color: rgb(243, 0, 9);
+}
+.addLikeButton {
+  background-color: rgb(0, 169, 231);
+}
+.spaceTextButton {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.commentButton,
+.addLikeButton {
+  border-radius: 50%;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  align-content: center;
+  justify-content: center;
+  color: white;
+  font-weight: bolder;
+}
+p {
+  font: normal normal normal 11px/17px Rubik;
+  letter-spacing: 0px;
+  color: #626262;
+  opacity: 1;
+}
+
+.userCard {
+  /*   background-color: rgb(255, 235, 235); */
+  width: 300px;
+  height: 500px;
+  align-items: center;
+  display: flex;
+
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  padding: 15px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.text {
+  justify-items: center;
+  justify-content: center;
+  font-family: "Rubik";
+}
+
+.image {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  height: 100px;
+  margin: 12px;
+}
+
+.h3 {
+  font-family: "Rubik", sans-serif;
+  font-weight: 800;
+  font-size: 42px;
+  color: crimson;
+}
+
+.button {
+  font-family: "Rubik";
+  font-size: 16px;
+  font-weight: 400;
+
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  margin: 40px;
+  padding: 15px;
+}

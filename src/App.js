@@ -1,23 +1,80 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import service from "./services";
+
+import Log from "./components/Log/Log";
+import SignUp from "./components/SignUp/SignUp";
+import Login from "./components/Login/Login";
+import AllUsers from "./components/AllUsers/AllUsers";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+import HomePage from "./components/HomePage/HomePage";
+import News from "./components/News/News";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState("");
+
+  //recuperation des informations de connexion
+  useEffect(async () => {
+    let info = await service.checkToken();
+    setUser(info);
+  }, [isLoggedIn]);
+
+  //actualisation de l'affichage
+  useEffect(() => {
+    console.log(user);
+    if (user?.data?.success) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, [user]);
+
+  useEffect(() => {
+    console.log("Connecté",isLoggedIn);
+  }, [isLoggedIn]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar className="fixe" user={user} isLoggedIn={isLoggedIn} />
+      
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage
+              user={user}
+              setUser={setUser}
+              setIsLoggedIn={setIsLoggedIn}
+              isLoggedIn={isLoggedIn}
+            />
+          }
+        />
+
+        <Route
+          path="/log"
+          element={
+            <Log
+              user={user}
+              setUser={setUser}
+              setIsLoggedIn={setIsLoggedIn}
+              isLoggedIn={isLoggedIn}
+            />
+          }
+        />
+
+        <Route path="/quizz" element={<AllUsers/>}>
+        </Route>
+        <Route path="/shop" element={<AllUsers/>}>
+          
+        </Route>
+
+        <Route path="/actu" element={<News user={user} />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,14 @@
+.homePageMain {
+  display: flex;
+  flex-direction: column;
+  top: 30%;
+  align-self: center;
+  align-items: center;
+  align-content: flex-end;
+  background-color: black;
+}
+.videoBox {
+  justify-content: center;
+  width: 100vw;
+  display: flex;
+}
