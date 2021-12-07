@@ -5,7 +5,7 @@
   background-color: #e70012;
   color: white;
   height: 150px;
-  text-decoration: none;
+  
   align-content: space-around;
   align-items: center;  
   z-index: 1;
@@ -15,14 +15,18 @@
 a {
   align-items: center;
   display: flex;
-  height: 120px;
+  height: 10px;
   text-decoration: none;
   cursor: pointer;
   color: white;
   padding: 15px;
-  padding-right: 40px;
+  padding-right: 10px;
   font-size: 20px;
  
+}
+
+a:hover{
+  text-decoration: underline;
 }
 
 

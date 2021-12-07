@@ -1,0 +1,27 @@
+.div {
+  display: flex;
+  flex-direction: column;
+  background-color: #e70012;
+  margin-top: 10%;
+  width: auto;
+  height: auto;
+  border-radius: 100px/20px;
+}
+
+.buttonLogOut {
+  display: flex;
+  justify-content: center;
+}
+
+.textLogOut {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
+.divRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

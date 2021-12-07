@@ -14,8 +14,13 @@ export default function AllUsers() {
   return (
     <div>
       {userList.map((users, id) => (
-        <div id={id} >
-            <p className="p">Nom:{users.lastName } Prénom:{users.firstName} Email:{users.email}</p>
+        <div id={id}>
+          <p className="p">Nom:{users.lastName}</p>
+          <p className="p"> Prénom:{users.firstName}</p>
+          <p className="p"> Email:{users.email}</p>
+          <p className="p"> Id:{users._id}</p>
+          <p className="p"> post:{users?.post?.title}</p>
+          <br/>    <br/>
         </div>
       ))}
     </div>

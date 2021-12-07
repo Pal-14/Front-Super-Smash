@@ -26,6 +26,15 @@ const service = {
       },
     });
   },
+  postByUser (body) {
+    let jwt = localStorage.getItem("jwt");
+    return url.post("/users/post-by-user", body, {headers :{
+      Authorization:`Bearer ${jwt}`}
+    })
+  },
+    
+  
+
 };
 
 export default service;

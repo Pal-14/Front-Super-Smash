@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import service from "../../services";
 import { Link } from "react-router-dom";
+import "./ForgotPassword.css";
 
-export default function Login(props) {
+export default function ForgotPassword(props) {
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [message, setMessage] = "";
 
@@ -14,47 +14,49 @@ export default function Login(props) {
     setter(e.target.value);
   };
 
+  const disabled = email === "";
+
   async function handleSubmit(e) {
-    if (email !== "" || password !== "") {
+    console.log(email);
+    if (email !== "") {
       let body = {
         email: email,
-        password: password,
       };
       let logIn = await service.logUsers(body);
       navigate("/actu");
       if (logIn.data.success) {
-        setPassword("");
         setEmail("");
         localStorage.setItem("jwt", logIn.data.token);
         props.setIsLoggedIn(true);
       } else {
-        setError(logIn.data.message);
+        setMessage(logIn.data.message);
       }
     }
   }
+  
 
   return (
-    <div>
+    <div className="containerForm">
+      <h3>
+        {error}
+        {message}Mot de Passe oublié
+      </h3>
       <div className="form">
-        <input vdsferf
+        <input
           onChange={(e) => onChange(e, setEmail)}
           name="email"
           type="email"
           placeholder="Email"
         ></input>
-        <input
-          onChange={(e) => onChange(e, setPassword)}
-          name="password"
-          type="password"
-          placeholder="Mot de passe"
-        ></input>
-        {/* <a><Link to="/forgot-password">Mot de passe oublié ?</Link> </a> */}
-        <button className="buttonCenter" type="submit" onClick={handleSubmit}>
-          Se Connecter
+
+        <button
+          disabled={disabled}
+          className="buttonCenter"
+          type="submit"
+          onClick={handleSubmit}
+        >
+          Récupérer
         </button>
-        <p className="forgot">
-          <Link to="/forgot-password">Mot de passe oublié?</Link>
-        </p>
       </div>
     </div>
   );

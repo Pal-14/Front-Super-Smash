@@ -40,7 +40,7 @@ export default function SignUp(props) {
     };
     let signUp = await service.signup(body);
     console.log(signUp.data.success);
-    navigate('/actu')
+    navigate("/actu");
     if (signUp.data.success) {
       setUserName("");
       setFirstName("");
@@ -49,19 +49,13 @@ export default function SignUp(props) {
       setPassword("");
       setConfirmPassword("");
       localStorage.setItem("jwt", signUp.data.token);
-      props.setIsLoggedIn(true)
-} else {
+      props.setIsLoggedIn(true);
+    } else {
       setError(signUp.data.success);
     }
   }
   return (
     <div className="form">
-      
-
-      <h1>
-        {error}{message}
-        {message}
-      </h1>
       <input
         onChange={(e) => onChange(e, setUserName)}
         name="userName"

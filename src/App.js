@@ -12,6 +12,8 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import HomePage from "./components/HomePage/HomePage";
 import News from "./components/News/News";
+import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
+import LogOut from "./components/Log/LogOut";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -25,7 +27,7 @@ function App() {
 
   //actualisation de l'affichage
   useEffect(() => {
-    console.log(user);
+    console.log(user,'user ici');
     if (user?.data?.success) {
       setIsLoggedIn(true);
     } else {
@@ -68,12 +70,19 @@ function App() {
 
         <Route path="/quizz" element={<AllUsers/>}>
         </Route>
+        <Route path="/forgot-password" element={<ForgotPassword/>}>
+        </Route>
         <Route path="/shop" element={<AllUsers/>}>
           
         </Route>
+        
 
-        <Route path="/actu" element={<News user={user} />} />
+        <Route path="/actu" element={<News user={user}  setUser={setUser}/>} />
+        <Route path="/deconnexion"element={<LogOut  setUser={setUser}
+              setIsLoggedIn={setIsLoggedIn} />}/>
+        
       </Routes>
+      
       <Footer />
     </div>
   );

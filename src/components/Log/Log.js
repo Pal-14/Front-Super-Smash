@@ -1,15 +1,16 @@
 import React from "react";
 import "./Log.css";
 import { useState } from "react";
-import AllUsers from "../AllUsers/AllUsers";
+
 import Login from "../Login/Login";
-import SignUp from "../SignUp/SignUp";
+import SignUp from  "../SignUp/SignUp"
+import LogOut from "./LogOut";
 
 export default function Log(props) {
   const [title, setTitle] = useState("Connexion");
   const [text, setText] = useState("Je n'ai pas encore de Compte");
   const [button, setButton] = useState("S'inscrire");
-
+  const [error, setError] = useState("")
   function change() {
     if (title === "Connexion") {
       setTitle("Incription");
@@ -24,8 +25,9 @@ export default function Log(props) {
 
   if (props.isLoggedIn === false) {
     return (
-      <div className="main">
+      <div className="main containerLog">
         <h1>{title}</h1>
+        
         {title === "Connexion" ? <Login {...props} /> : <SignUp {...props} />}
         <div className="buttonCenter">
           <p className="textSize">{text}</p>
@@ -33,7 +35,7 @@ export default function Log(props) {
         </div>
       </div>
     );
-  } else {
-    return <AllUsers />;
+  }else {
+    <LogOut/>
   }
 }
