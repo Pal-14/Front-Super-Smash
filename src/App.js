@@ -27,7 +27,8 @@ function App() {
 
   //actualisation de l'affichage
   useEffect(() => {
-    console.log(user,'user ici');
+    console.log(user);
+    console.log("test");
     if (user?.data?.success) {
       setIsLoggedIn(true);
     } else {
@@ -36,13 +37,13 @@ function App() {
   }, [user]);
 
   useEffect(() => {
-    console.log("Connecté",isLoggedIn);
+    console.log("Connecté", isLoggedIn);
   }, [isLoggedIn]);
 
   return (
     <div className="App">
       <Navbar className="fixe" user={user} isLoggedIn={isLoggedIn} />
-      
+
       <Routes>
         <Route
           path="/"
@@ -68,21 +69,26 @@ function App() {
           }
         />
 
-        <Route path="/quizz" element={<AllUsers/>}>
-        </Route>
-        <Route path="/forgot-password" element={<ForgotPassword/>}>
-        </Route>
-        <Route path="/shop" element={<AllUsers/>}>
-          
-        </Route>
-        
+        <Route path="/quizz" element={<AllUsers />}></Route>
+        <Route path="/forgot-password" element={<ForgotPassword />}></Route>
+        <Route path="/shop" element={<AllUsers />}></Route>
 
-        <Route path="/actu" element={<News user={user}  setUser={setUser}/>} />
-        <Route path="/deconnexion"element={<LogOut  setUser={setUser}
-              setIsLoggedIn={setIsLoggedIn} />}/>
-        
+        <Route
+          path="/actu"
+          element={
+            <News
+              user={user}
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+            />
+          }
+        />
+        <Route
+          path="/deconnexion"
+          element={<LogOut setUser={setUser} setIsLoggedIn={setIsLoggedIn} />}
+        />
       </Routes>
-      
+
       <Footer />
     </div>
   );

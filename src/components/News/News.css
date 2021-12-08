@@ -24,6 +24,7 @@
   align-items: center;
   justify-content: center;
   align-items: center;
+  margin-bottom: 20px;
 }
 .titleh1,
 .titleh4 {
@@ -134,6 +135,8 @@ p {
   margin: 20px;
   padding-left: 10px;
   border-radius: 10px/20px;
+  font-size: 20px;
+  font-family: normal normal normal 20px/37px Rubik;
 }
 
 /* .newPost:focus {

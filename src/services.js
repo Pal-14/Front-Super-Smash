@@ -22,19 +22,17 @@ const service = {
     let jwt = localStorage.getItem("jwt");
     return url.get("/users/check-token", {
       headers: {
+        Authorization: `Bearer ${jwt}`}
+    });
+  },
+  postByUser(body) {
+    let jwt = localStorage.getItem("jwt");
+    return url.post("/users/post-by-user", body, {
+      headers: {
         Authorization: `Bearer ${jwt}`,
       },
     });
   },
-  postByUser (body) {
-    let jwt = localStorage.getItem("jwt");
-    return url.post("/users/post-by-user", body, {headers :{
-      Authorization:`Bearer ${jwt}`}
-    })
-  },
-    
-  
-
 };
 
 export default service;

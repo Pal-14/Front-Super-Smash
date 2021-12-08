@@ -27,17 +27,15 @@ export default function News() {
     setter(e.target.value);
   };
 
-  async function handleSubmitPost() {
+  async function handleSubmitPost(props) {
     console.log(userPostStorage, "userPostStorage");
     let body = {
       title,
       content,
     };
     let postSubmit = await service.postByUser(body);
-    if (postSubmit.data.message === "yes") {
-      navigate("/actu");
-      window.location.reload(true);
-      
+    if (postSubmit.data.success) {
+      window.location.reload(false);
       console.log(postSubmit, "ici");
     }
   }
