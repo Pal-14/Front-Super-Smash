@@ -21,8 +21,8 @@ export default function Login(props) {
         password: password,
       };
       let logIn = await service.logUsers(body);
-      navigate("/actu");
       if (logIn.data.success) {
+        navigate("/actu");
         setPassword("");
         setEmail("");
         localStorage.setItem("jwt", logIn.data.token);

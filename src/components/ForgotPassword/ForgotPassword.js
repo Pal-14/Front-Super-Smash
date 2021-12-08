@@ -33,14 +33,12 @@ export default function ForgotPassword(props) {
       }
     }
   }
-  
 
   return (
     <div className="containerForm">
-      <h3>
-        {error}
-        {message}Mot de Passe oublié
-      </h3>
+      <h1>Attention cette page est en cours de construction</h1>
+      <h3>Elle n'est pas encore opérationnelle merci de ne pas y prêter attention.</h3>
+      <h3>Mot de Passe oublié</h3>
       <div className="form">
         <input
           onChange={(e) => onChange(e, setEmail)}

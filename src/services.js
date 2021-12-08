@@ -33,6 +33,10 @@ const service = {
       },
     });
   },
+
+  displayAllPost () {
+    return url.get("/users/display-all-post")
+  }
 };
 
 export default service;
