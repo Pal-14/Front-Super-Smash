@@ -5,23 +5,40 @@ import image1 from "../../assets/apple-icon-57x57.png";
 import service from "../../services";
 import { useNavigate } from "react-router";
 
-export default function News(props) {
+export default function News() {
   const [userPostStorage, setUserPostStorage] = useState([]);
-  const [likes, setLikes] = useState(0);
+
+  const [loading, setLoading] = useState(false);
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [time, setTime] = useState("");
 
   let navigate = useNavigate();
-
-  useEffect(() => {}, [likes]);
 
   useEffect(() => {
     service
       .displayAllPost()
       .then((response) => setUserPostStorage(response.data));
   }, []);
+/* 
+    const setPosts = () => {
+    setLoading(true);
+      service.displayAllPost().then((postsFromDb) => {
+        setUserPostStorage(postsFromDb);
+        setLoading(false);
+      });
+  };
+
+  useEffect(setPosts,[]);
+
+
+  function handleClickLike(id) {
+    let post =id 
+    service.setLike({post: id, post})
+    .then(()=> {
+      setPosts();
+    });
+  } */
 
   const onChange = (e, setter) => {
     setter(e.target.value);
@@ -35,8 +52,9 @@ export default function News(props) {
     };
     let postSubmit = await service.postByUser(body);
     if (postSubmit.data.success) {
-      /* window.location.reload(true); */
-        
+      alert("post créer avec succès");
+
+      window.location.reload(true);
     }
   }
 
@@ -51,6 +69,7 @@ export default function News(props) {
 
       <div className="containerAddPost">
         <div className="addPost">
+          <label htmlFor="title">Titre:</label>
           <textarea
             className="newPost"
             maxLength="30"
@@ -58,6 +77,7 @@ export default function News(props) {
             onChange={(e) => onChange(e, setTitle)}
             name="title"
           ></textarea>
+          <label htmlFor="title">Message:</label>
           <textarea
             className="newPost"
             maxLength="140"
@@ -76,27 +96,35 @@ export default function News(props) {
           <div key={id} className="containerCardFeed">
             <div className="cardFeed">
               <div className="cardPartOne">
-                <img className="imgTwo" src={image1} />
+                <div className="imgTwo">
+                  {" "}
+                  <img className="imgTwo" src={image1} />
+                  <span>{post.author}</span>
+                </div>
+
                 <p>
                   <span>{post.title}</span>
+                  <br />
                 </p>
-                <p> {/* {lepost.date} */} Il y a 12 heures.</p>
+                <div>
+                  <p>
+                    {" "}
+                    {/* {lepost.date} */}Le: {post.date}.
+                  </p>
+                  <p>à {post.time}</p>
+                </div>
+
                 {/* mettre la date dans la V2 */}
               </div>
 
               <div className="cardPartTwo">
                 <p></p>
                 <p>{post.content}</p>
-                <p className="nbLike">Vous avez {likes} Likes </p>
+                <p className="nbLike">Vous avez {/* {likes} */} Likes </p>
               </div>
 
               <div className="cardPartThree">
-                <button
-                  className="commentButton"
-                  onClick={() => setLikes(likes + 1)}
-                >
-                  A
-                </button>
+                <button className="commentButton">A</button>
 
                 <p className="spaceTextButton">Press A to Like</p>
                 <button

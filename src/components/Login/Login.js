@@ -15,31 +15,33 @@ export default function Login(props) {
   };
 
   async function handleSubmit(e) {
-    if (email !== "" || password !== "") {
+    if (email == "" || password !== "") {
       let body = {
         email: email,
         password: password,
       };
       let logIn = await service.logUsers(body);
-      if (logIn.data.success) {
+      if (logIn.data.token) {
         navigate("/actu");
         setPassword("");
         setEmail("");
         localStorage.setItem("jwt", logIn.data.token);
         props.setIsLoggedIn(true);
-      } else {
-        setError(logIn.data.message);
-      }
-    }
+        console.log('mess',logIn.data.success);
+      }else {setError(logIn.data)} 
+    } 
   }
 
   return (
     <div>
+      <h5> {error}</h5>
       <div className="form">
-        <input vdsferf
+        <input
+          vdsferf
           onChange={(e) => onChange(e, setEmail)}
           name="email"
           type="email"
+          required
           placeholder="Email"
         ></input>
         <input

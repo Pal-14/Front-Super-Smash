@@ -22,7 +22,8 @@ const service = {
     let jwt = localStorage.getItem("jwt");
     return url.get("/users/check-token", {
       headers: {
-        Authorization: `Bearer ${jwt}`}
+        Authorization: `Bearer ${jwt}`,
+      },
     });
   },
   postByUser(body) {
@@ -34,9 +35,23 @@ const service = {
     });
   },
 
-  displayAllPost () {
-    return url.get("/users/display-all-post")
-  }
+  displayAllPost(body) {
+    let jwt = localStorage.getItem("jwt");
+    return url.get("/users/display-all-post", body, {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    });
+  },
+
+  setLike(body) {
+    let jwt = localStorage.getItem("jwt");
+    return url.post("/users/like-post", body, {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    });
+  },
 };
 
 export default service;

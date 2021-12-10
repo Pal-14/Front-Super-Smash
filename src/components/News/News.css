@@ -1,6 +1,5 @@
 .main {
-  flex: 2;
-
+  flex: 1;
   display: flex;
   flex-direction: column;
   background: lightgray;
@@ -9,6 +8,7 @@
   align-items: center;
 }
 .row {
+  display: flex;
   background-image: url("../../assets/imagep.png");
   flex: 1;
   /* margin-top: 150px; */
@@ -148,4 +148,5 @@ p {
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-top: 150px
 }
