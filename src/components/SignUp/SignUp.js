@@ -66,13 +66,13 @@ export default function SignUp(props) {
         onChange={(e) => onChange(e, setLastName)}
         name="lastName"
         type="text"
-        placeholder="Prénom"
+        placeholder="Nom"
       ></input>
       <input
         onChange={(e) => onChange(e, setFirstName)}
         name="firstName"
         type="text"
-        placeholder="Nom"
+        placeholder="Prénom"
       ></input>
       <input
         onChange={(e) => onChange(e, setEmail)}

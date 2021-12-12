@@ -20,11 +20,11 @@ export default function News() {
       .displayAllPost()
       .then((response) => setUserPostStorage(response.data));
   }, []);
-/* 
+
     const setPosts = () => {
     setLoading(true);
       service.displayAllPost().then((postsFromDb) => {
-        setUserPostStorage(postsFromDb);
+        setUserPostStorage(postsFromDb.data);
         setLoading(false);
       });
   };
@@ -38,7 +38,7 @@ export default function News() {
     .then(()=> {
       setPosts();
     });
-  } */
+  }
 
   const onChange = (e, setter) => {
     setter(e.target.value);
@@ -52,8 +52,6 @@ export default function News() {
     };
     let postSubmit = await service.postByUser(body);
     if (postSubmit.data.success) {
-      alert("post créer avec succès");
-
       window.location.reload(true);
     }
   }

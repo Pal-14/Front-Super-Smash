@@ -1,0 +1,61 @@
+.row5 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100vh;
+}
+.profilPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.rowProfil .a {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.card {
+  background-color: rgb(242,242,242);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: auto;
+  width:800px;
+  border-radius: 5px;
+}
+.profilImg {
+  display: flex;
+  border-radius: 50px;
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
+.textCenter {
+  display: flex;
+  justify-content: center;
+}
+
+.col-1 {
+  display: flex;
+  flex-direction: column;
+  padding: 10px ;
+  border-right: 2px solid white;
+  align-items: flex-start;
+  width: 50%;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.col-2 {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  justify-content: center;
+  width: 50%;
+}

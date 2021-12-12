@@ -12,6 +12,8 @@ import HomePage from "./components/HomePage/HomePage";
 import News from "./components/News/News";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import LogOut from "./components/Log/LogOut";
+import Profil from "./components/Profile/Profil";
+import UserInfo from "./components/Profile/UserInfo";
 
 
 function App() {
@@ -26,7 +28,7 @@ function App() {
 
   //actualisation de l'affichage
   useEffect(() => {
-    console.log(user);
+    console.log(user,'user');
     console.log("test");
     if (user?.data?.success) {
       setIsLoggedIn(true);
@@ -56,38 +58,17 @@ function App() {
           }
         />
 
-        <Route
-          path="/log"
-          element={
-            <Log
-              user={user}
-              setUser={setUser}
-              setIsLoggedIn={setIsLoggedIn}
-              isLoggedIn={isLoggedIn}
-            />
-          }
-        />
+        <Route path="/log"element={<Log user={user} setUser={setUser} setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />}/>
 
         <Route path="/quizz" element={<AllUsers />}></Route>
         <Route path="/forgot-password" element={<ForgotPassword />}></Route>
         <Route path="/shop" element={<AllUsers />}></Route>
-
-        <Route
-          path="/actu"
-          element={
-            <News
-              user={user}
-              isLoggedIn={isLoggedIn}
-              setIsLoggedIn={setIsLoggedIn}
-            />
-          }
-        />
-      
-
-        <Route
-          path="/deconnexion"
-          element={<LogOut setUser={setUser} setIsLoggedIn={setIsLoggedIn} />}
-        />
+        <Route path="/actu" element={ <News user={user} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}/>
+        <Route path="/profil" element={ <Profil user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}>
+          <Route path="/profil/mes-infos" element={<UserInfo user={user}/>}/>
+          <Route path="/profil/mon-profil" element={<AllUsers/>}/>
+        </Route>
+        <Route path="/deconnexion" element={<LogOut setUser={setUser} setIsLoggedIn={setIsLoggedIn} />}/>
       </Routes>
 
       <Footer />

@@ -21,6 +21,7 @@ export default function Navbar(props) {
               <Link to="/quizz">Quizz</Link>
               <Link to="/shop">Shop</Link>
               <Link to="/actu">Actu</Link>
+              <Link to="/profil">Mon profil</Link>
               <Link to="/deconnexion">Déconnexion</Link>
             </div>
           )}

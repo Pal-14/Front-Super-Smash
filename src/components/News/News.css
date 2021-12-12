@@ -83,6 +83,7 @@ span {
   color: #e70012;
   text-transform: uppercase;
   opacity: 1;
+  padding-right: 5px;
 }
 .cardPartTwo {
   display: flex;
@@ -148,5 +149,4 @@ p {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 150px
 }
