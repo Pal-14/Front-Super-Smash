@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:5000";
+const baseURL =
+  /* "https://backendssbssn2.osc-fr1.scalingo.io" ||  */ "http://localhost:5000";
 
 const url = axios.create({
   baseURL,
@@ -49,6 +50,25 @@ const service = {
     return url.post("/users/like-post", body, {
       headers: {
         Authorization: `Bearer ${jwt}`,
+      },
+    });
+  },
+
+  editDescription(body) {
+    let jwt = localStorage.getItem("jwt");
+    return url.put("/users/edit-user-description", body, {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    });
+  },
+
+  editUserPic(formData) {
+    let jwt = localStorage.getItem("jwt");
+    return url.post("/users/upload", formData, {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+        "Content-Type": "multipart/form-data",
       },
     });
   },

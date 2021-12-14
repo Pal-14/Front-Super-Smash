@@ -12,7 +12,7 @@ export default function AllUsers() {
   }, []);
 
   return (
-    <div>
+    <div  className="color">
       {userList.map((users, id) => (
         <div id={id}>
           <p className="p">Nom:{users.lastName}</p>

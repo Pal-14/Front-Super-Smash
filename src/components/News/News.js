@@ -5,13 +5,18 @@ import image1 from "../../assets/apple-icon-57x57.png";
 import service from "../../services";
 import { useNavigate } from "react-router";
 
-export default function News() {
+export default function News(props) {
   const [userPostStorage, setUserPostStorage] = useState([]);
 
   const [loading, setLoading] = useState(false);
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+
+  const pictureArray = props.user?.data?.data?.pictureUrl;
+  const lastPicture = pictureArray?.at(-1);
+
+  let Url = "http://localhost:5000/get-pic-profil/";
 
   let navigate = useNavigate();
 
@@ -94,9 +99,9 @@ export default function News() {
           <div key={id} className="containerCardFeed">
             <div className="cardFeed">
               <div className="cardPartOne">
-                <div className="imgTwo">
+                <div className="imgProfil">
                   {" "}
-                  <img className="imgTwo" src={image1} />
+                  <img className="imgTwo" src={`${Url}${lastPicture}`} />
                   <span>{post.author}</span>
                 </div>
 
@@ -109,7 +114,7 @@ export default function News() {
                     {" "}
                     {/* {lepost.date} */}Le: {post.date}.
                   </p>
-                  <p>à {post.time}</p>
+                 
                 </div>
 
                 {/* mettre la date dans la V2 */}

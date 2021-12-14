@@ -1,40 +1,81 @@
-import olaf from "../../assets/olaf.png";
-import { Link, Outlet } from "react-router-dom";
 import "./Profil.css";
+import { useState } from "react";
+import service from "../../services";
+import Upload from "../UploadPic.js/Upload";
+import "./UserInfo.css";
 
 export default function UserInfo(props) {
-  const user = props?.user?.data;
-  console.log(user, "userinprofile");
+  const [description, setDescription] = useState("");
+  const [error, setError] = useState("");
+
+  const user = props.user?.data;
+  console.log(user, "user dans userinfo");
+
+  const pictureArray = props.user?.data?.data?.pictureUrl;
+  const lastPicture = pictureArray?.at(-1);
+  console.log(lastPicture, "last");
+  console.log(pictureArray);
+
+  const onChange = (e, setter) => {
+    setter(e.target.value);
+  };
+
+  async function handleChange(props) {
+    let body = {
+      description,
+    };
+    let descriptionSubmit = await service.editDescription(body);
+    if (descriptionSubmit.data.success) {
+      window.location.reload(true);
+    }
+  }
+
+  let Url = "http://localhost:5000/get-pic-profil/";
 
   return (
     <div className="profilPage">
       <div className="row5">
         <div className="card">
           <div className="col-1">
-            <img className="profilImg" src={olaf} alt="Photo" />
+            <div>
+              <img
+                className="profilImg"
+                src={`${Url}${lastPicture}`}
+                alt="Photo"
+              />
+            </div>
+
+            <Upload {...props} />
+
             <p className="textCenter">
-            <span>Pseudo: </span> {user?.data.userName}
+              <span>Pseudo: </span> {user?.data.userName}
             </p>
             <p className="textCenter">
-            <span>Nom: </span> {user?.data.lastName}
+              <span>Nom: </span> {user?.data.lastName}
             </p>
             <p className="textCenter">
-            <span>Prénom:</span> {user?.data.firstName}
+              <span>Prénom:</span> {user?.data.firstName}
             </p>
             <p className="textCenter">
-            <span>Email: </span>
+              <span>Email: </span>
               {user?.data.email}
             </p>
           </div>
 
           <div className="col-2">
+            {/*  <p>
+              <span>Description:</span>
+              {user?.data.description}
+            </p> */}
             <p>
-              <span>Description:</span> Moi c'est Olaf est j'aime les gros
-              calins et toi Romain ? tu aimes les gros calins{" "}
-            </p>
-            <p>
-              <span>Plus d'info:</span> Envoi Olaf au 6 12 12{" "}
-            </p>
+              <span>Descritption:</span> {user?.data.description}
+            </p>{" "}
+            <input
+              name="description"
+              placeholder="Décrivez-vous"
+              onChange={(e) => onChange(e, setDescription)}
+            ></input>
+            <button onClick={handleChange}>Changer la description </button>
           </div>
         </div>
       </div>

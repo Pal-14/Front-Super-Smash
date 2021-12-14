@@ -52,10 +52,16 @@ h2 {
   font: normal normal bold 50px/60px Rubik;
   opacity: 1;
 }
+.imgProfil {
+  height: 100px;
+  
+}
 .imgTwo {
-  border-radius: 25px;
-  height: 50px;
+  border-radius: 50px;
+  height: 100px;
+  width: 100px;
   left: 33px;
+  object-fit: cover;
 }
 .cardFeed {
   background-color: rgb(242, 242, 242);

@@ -28,7 +28,7 @@ export default function Login(props) {
         localStorage.setItem("jwt", logIn.data.token);
         props.setIsLoggedIn(true);
         console.log('mess',logIn.data.success);
-      }else {setError(logIn.data)} 
+      }else {setError(logIn.data.message)} 
     } 
   }
 
@@ -37,7 +37,6 @@ export default function Login(props) {
       <h5> {error}</h5>
       <div className="form">
         <input
-          vdsferf
           onChange={(e) => onChange(e, setEmail)}
           name="email"
           type="email"
