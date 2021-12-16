@@ -56,7 +56,7 @@ export default function Upload(props) {
   return (
     <div>
       <form encType="multipart/form-data" method="POST" action="/users/upload">
-        <div style={styles.container}>
+        <div>
           <h4>
             {message}
             {error}
@@ -75,26 +75,3 @@ export default function Upload(props) {
     </div>
   );
 }
-
-const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    paddingTop: 50,
-  },
-  preview: {
-    marginTop: 50,
-    display: "flex",
-    flexDirection: "column",
-  },
-  image: { maxWidth: "100%", maxHeight: 320 },
-  delete: {
-    cursor: "pointer",
-    padding: 15,
-    background: "red",
-    color: "white",
-    border: "none",
-  },
-};

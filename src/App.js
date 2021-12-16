@@ -43,24 +43,12 @@ function App() {
 
   return (
     <div className="App">
-      <Navbarpp className="fixe" user={user} isLoggedIn={isLoggedIn} />
+      <Navbarpp className="fixe" user={user}  isLoggedIn={isLoggedIn} />
 
       <Routes>
-        <Route
-          path="/"
-          element={
-            <HomePage
-              user={user}
-              setUser={setUser}
-              setIsLoggedIn={setIsLoggedIn}
-              isLoggedIn={isLoggedIn}
-            />
-          }
-        />
-
+        <Route path="/" element={<HomePage user={user} setUser={setUser} setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>}/>
         <Route path="/log"element={<Log user={user} setUser={setUser} setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />}/>
-
-        <Route path="/quizz" element={<AllUsers />}></Route>
+        <Route path="/quizz" element={<AllUsers />}/>
         <Route path="/forgot-password" element={<ForgotPassword />}></Route>
         <Route path="/shop" element={<AllUsers />}></Route>
         <Route path="/actu" element={ <News user={user} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}/>

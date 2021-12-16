@@ -2,10 +2,13 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 import photo from "../../assets/photo.jpg";
 
+
 export default function Navbar(props) {
   let isLoggedIn = props.isLoggedIn;
 
-  console.log(isLoggedIn, "isLoggedIn");
+  let user = props.user?.data?.data;
+
+  console.log(isLoggedIn, "isLoggedIn dans la navBar");
 
   const displayButton = () => {
     if (isLoggedIn === true) {
@@ -18,6 +21,7 @@ export default function Navbar(props) {
               <Link to="/">
                 <img className="logo" src={photo} />
               </Link>
+              <div>Connecté en tant que: {user?.firstName}</div>
               <Link to="/quizz">Quizz</Link>
               <Link to="/shop">Shop</Link>
               <Link to="/actu">Actu</Link>

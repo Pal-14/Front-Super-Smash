@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./News.css";
-import image1 from "../../assets/apple-icon-57x57.png";
+import imgDefault from "../../assets/icons8-utilisateur.gif";
 
 import service from "../../services";
 import { useNavigate } from "react-router";
@@ -101,7 +101,8 @@ export default function News(props) {
               <div className="cardPartOne">
                 <div className="imgProfil">
                   {" "}
-                  <img className="imgTwo" src={`${Url}${lastPicture}`} />
+                  {lastPicture ? 
+                  <img className="imgTwo" src={`${Url}${lastPicture}`} /> :<img className="imgTwo" src={imgDefault}></img>}
                   <span>{post.author}</span>
                 </div>
 

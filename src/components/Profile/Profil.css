@@ -23,7 +23,7 @@
   justify-content: center;
   height: auto;
   width:900px;
-  height: 400px;
+  height: 500px;
   border-radius: 5px;
   margin-bottom: 200px;
   overflow: auto;
@@ -38,6 +38,7 @@
 .textCenter {
   display: flex;
   justify-content: center;
+  margin:0
 }
 
 .col-1 {

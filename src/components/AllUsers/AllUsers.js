@@ -19,7 +19,6 @@ export default function AllUsers() {
           <p className="p"> Prénom:{users.firstName}</p>
           <p className="p"> Email:{users.email}</p>
           <p className="p"> Id:{users._id}</p>
-          <p className="p"> post:{users?.post?.title}</p>
           <br/>    <br/>
         </div>
       ))}
