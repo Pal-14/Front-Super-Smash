@@ -3,20 +3,19 @@ import { useNavigate } from "react-router";
 import service from "../../services";
 import { Link } from "react-router-dom";
 
-
 export default function Login(props) {
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [message, setMessage] =("");
+  const [message, setMessage] = "";
 
   const onChange = (e, setter) => {
     setter(e.target.value);
   };
 
-  async function handleSubmit(e) {
-    if (email == "" || password !== "") {
+  async function handleSubmit(event) {
+    if (email !== "" || password !== "") {
       let body = {
         email: email,
         password: password,
@@ -28,15 +27,20 @@ export default function Login(props) {
         setEmail("");
         localStorage.setItem("jwt", logIn.data.token);
         props.setIsLoggedIn(true);
-        console.log('mess',logIn.data.success);
-      }else {setError(logIn.data.message)}
+        console.log("message de logIn", logIn);
+      } else {
+        setError(logIn.data.message);
+      }
     }
-    
   }
 
   return (
     <div>
-      <h5> {error}{message}</h5>
+      <h3 style={{color:"red",textAlign:"center"}}>
+        {" "}
+        {error}
+        {message}
+      </h3>
       <div className="form">
         <input
           onChange={(e) => onChange(e, setEmail)}

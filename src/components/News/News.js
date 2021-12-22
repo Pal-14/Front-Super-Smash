@@ -12,9 +12,12 @@ export default function News(props) {
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  
+  let authorProfilePicture = props.user?.data?.data?.pictureUrl.at(-1); 
+  console.log(authorProfilePicture,'profil pic');
 
-  const pictureArray = props.user?.data?.data?.pictureUrl;
-  const lastPicture = pictureArray?.at(-1);
+/*   const pictureArray = props.user?.data?.data?.pictureUrl;
+  const lastPicture = pictureArray?.at(-1) */;
 
   let Url = "http://localhost:5000/get-pic-profil/";
 
@@ -54,6 +57,7 @@ export default function News(props) {
     let body = {
       title,
       content,
+      authorProfilePicture,
     };
     let postSubmit = await service.postByUser(body);
     if (postSubmit.data.success) {
@@ -101,8 +105,8 @@ export default function News(props) {
               <div className="cardPartOne">
                 <div className="imgProfil">
                   {" "}
-                  {lastPicture ? 
-                  <img className="imgTwo" src={`${Url}${lastPicture}`} /> :<img className="imgTwo" src={imgDefault}></img>}
+                  { post.authorProfilePicture ?  
+                  <img className="imgTwo" src={`${Url}${post.authorProfilePicture}`} /> :<img className="imgTwo" src={imgDefault}></img>}
                   <span>{post.author}</span>
                 </div>
 
@@ -124,11 +128,11 @@ export default function News(props) {
               <div className="cardPartTwo">
                 <p></p>
                 <p>{post.content}</p>
-                <p className="nbLike">Vous avez {/* {likes} */} Likes </p>
+                <p className="nbLike">Vous avez {setPosts} Likes </p>
               </div>
 
               <div className="cardPartThree">
-                <button className="commentButton">A</button>
+                <button className="commentButton"   onClick={handleClickLike}>A</button>
 
                 <p className="spaceTextButton">Press A to Like</p>
                 <button

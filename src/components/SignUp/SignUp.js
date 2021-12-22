@@ -19,6 +19,8 @@ export default function SignUp(props) {
     setter(e.target.value);
   };
 
+  
+
   async function handleSubmit(event) {
     if (
       !userName ||
@@ -40,8 +42,8 @@ export default function SignUp(props) {
     };
     let signUp = await service.signup(body);
     console.log(signUp.data.success);
-    navigate("/actu");
-    if (signUp.data.success) {
+    if (signUp.data.token) {
+      navigate("/actu");
       setUserName("");
       setFirstName("");
       setLastName("");
@@ -50,51 +52,58 @@ export default function SignUp(props) {
       setConfirmPassword("");
       localStorage.setItem("jwt", signUp.data.token);
       props.setIsLoggedIn(true);
+      return (null)
     } else {
-      setError(signUp.data.success);
+      setError(signUp.data.message);
     }
   }
   return (
-    <div className="form">
-      <input
-        onChange={(e) => onChange(e, setUserName)}
-        name="userName"
-        type="text"
-        placeholder="Nom d'utilisateur"
-      ></input>
-      <input
-        onChange={(e) => onChange(e, setLastName)}
-        name="lastName"
-        type="text"
-        placeholder="Nom"
-      ></input>
-      <input
-        onChange={(e) => onChange(e, setFirstName)}
-        name="firstName"
-        type="text"
-        placeholder="Prénom"
-      ></input>
-      <input
-        onChange={(e) => onChange(e, setEmail)}
-        name="email"
-        type="email"
-        placeholder="Email"
-      ></input>
-      <input
-        onChange={(e) => onChange(e, setPassword)}
-        name="password"
-        type="password"
-        placeholder="Mot de Passe"
-      ></input>
-      <input
-        onChange={(e) => onChange(e, setConfirmPassword)}
-        name="confirmPassword"
-        type="password"
-        placeholder="Confirmer mot de Passe"
-      ></input>
-      <button onClick={handleSubmit} type="submit">
-        Inscription
-      </button>
+    
+    <div>
+      <h3 style={{ color: "red", textAlign: "center" }}>
+        {error} {message}
+      </h3>
+      <div className="form">
+        <input
+          onChange={(e) => onChange(e, setUserName)}
+          name="userName"
+          type="text"
+          placeholder="Nom d'utilisateur"
+        ></input>
+        <input
+          onChange={(e) => onChange(e, setLastName)}
+          name="lastName"
+          type="text"
+          placeholder="Nom"
+        ></input>
+        <input
+          onChange={(e) => onChange(e, setFirstName)}
+          name="firstName"
+          type="text"
+          placeholder="Prénom"
+        ></input>
+        <input
+          onChange={(e) => onChange(e, setEmail)}
+          name="email"
+          type="email"
+          placeholder="Email"
+        ></input>
+        <input
+          onChange={(e) => onChange(e, setPassword)}
+          name="password"
+          type="password"
+          placeholder="Mot de Passe"
+        ></input>
+        <input
+          onChange={(e) => onChange(e, setConfirmPassword)}
+          name="confirmPassword"
+          type="password"
+          placeholder="Confirmer mot de Passe"
+        ></input>
+        <button onClick={handleSubmit} type="submit">
+          Inscription
+        </button>
+      </div>
     </div>
   );
 }

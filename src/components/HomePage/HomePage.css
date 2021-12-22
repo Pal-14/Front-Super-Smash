@@ -6,9 +6,11 @@
   align-items: center;
   align-content: flex-end;
   background-color: black;
+  height: 100%;
 }
 .videoBox {
   justify-content: center;
   width: 100vw;
   display: flex;
+  height: 100%;
 }

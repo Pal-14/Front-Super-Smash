@@ -7,16 +7,12 @@ export default function Upload(props) {
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
 
-  const removeSelectedImage = () => {
-    setSelectedImage();
-  };
-
   let formData = useMemo(() => new FormData(), []);
 
   const onFileChange = useCallback(
     (e) => {
       let fileTypeCheck = e.target.files[0].type;
-      console.log(e.target.name, "input value");
+      console.log(fileTypeCheck, "input value");
 
       if (
         fileTypeCheck !== "image/png" &&
@@ -37,7 +33,11 @@ export default function Upload(props) {
   );
 
   async function SubmitFileData(e) {
+    let authorProfilePicture = props.user?.data?.data?.pictureUrl.at(-1)
+    console.log(authorProfilePicture,'nanananinana');
     console.log(selectedImage);
+    formData.append("authorProfilePicture",authorProfilePicture)
+    console.log(formData,'looooog de farmadata');
 
     if (selectedImage !== "") {
       let docsSubmitted = await service.editUserPic(formData);
@@ -66,11 +66,10 @@ export default function Upload(props) {
 
           <br />
         </div>
-        <div className="center">
-          <a className="red" onClick={SubmitFileData}>
-            Changer ma photo{" "}
-          </a>
-        </div>
+        <div className="center"></div>
+        <a className="red" onClick={SubmitFileData}>
+          Changer ma photo{" "}
+        </a>
       </form>
     </div>
   );

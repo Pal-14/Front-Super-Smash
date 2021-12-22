@@ -1,9 +1,9 @@
-import "./Profil.css";
 import { useState } from "react";
 import service from "../../services";
 import Upload from "../UploadPic.js/Upload";
-import "./UserInfo.css";
 import imgDefault from "../../assets/icons8-utilisateur.gif";
+import "./Profil.css";
+import "./UserInfo.css";
 
 export default function UserInfo(props) {
   const [description, setDescription] = useState("");
@@ -12,10 +12,10 @@ export default function UserInfo(props) {
   const user = props.user?.data;
   console.log(user, "user dans userinfo");
 
-  const pictureArray = props.user?.data?.data?.pictureUrl;
-  const lastPicture = pictureArray?.at(-1);
-  console.log(lastPicture, "last");
-  console.log(pictureArray);
+/*   const pictureArray = props.user?.data?.data?.pictureUrl;
+  const lastPicture = pictureArray?.at(-1); */
+  /* console.log(lastPicture, "last");
+  console.log(pictureArray,'picarray'); */
 
   const onChange = (e, setter) => {
     setter(e.target.value);
@@ -39,15 +39,18 @@ export default function UserInfo(props) {
         <div className="card">
           <div className="col-1">
             <div className="row-1">
-              {lastPicture ?<img
-                className="profilImg"
-                src={`${Url}${lastPicture}`}
-                alt="Photo" 
-              /> : <img className="profilImg" src={imgDefault}/>}   <Upload {...props} />
-
+              {props.user?.data?.data?.pictureUrl.at(-1) ? (
+                <img
+                  className="profilImg"
+                  src={`${Url}${props.user?.data?.data?.pictureUrl.at(-1)}`}
+                  alt="Photo"
+                />
+              ) : (
+                <img className="profilImg" src={imgDefault} />
+              )}{" "}
+              <Upload {...props} />
             </div>
 
-         
             <p className="textCenter">
               <span>Pseudo: </span> {user?.data.userName}
             </p>
@@ -64,14 +67,11 @@ export default function UserInfo(props) {
           </div>
 
           <div className="col-2">
-            {/*  <p>
-              <span>Description:</span>
-              {user?.data.description}
-            </p> */}
             <p>
               <span>Descritption:</span> {user?.data.description}
             </p>{" "}
             <input
+              maxLength={140}
               name="description"
               placeholder="Décrivez-vous"
               onChange={(e) => onChange(e, setDescription)}
