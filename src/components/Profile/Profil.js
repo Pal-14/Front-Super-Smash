@@ -4,7 +4,6 @@ import olaf from "../../assets/olaf.png";
 
 export default function Profil(props) {
   const user = props?.user?.data;
-  console.log(user, "userinprofile");
 
   return (
     <div className="profilPage">

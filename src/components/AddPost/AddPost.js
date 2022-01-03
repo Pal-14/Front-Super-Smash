@@ -18,7 +18,6 @@ export default function AddPost() {
       content,
     };
     let postSubmit = await service.postByUser(body);
-    console.log(postSubmit);
   }
 
   return (

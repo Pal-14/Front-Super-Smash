@@ -1,16 +1,12 @@
 .homePageMain {
   display: flex;
   flex-direction: column;
-  top: 30%;
-  align-self: center;
   align-items: center;
-  align-content: flex-end;
-  background-color: black;
-  height: 100%;
+  overflow: hidden;
 }
-.videoBox {
-  justify-content: center;
-  width: 100vw;
-  display: flex;
-  height: 100%;
-}
+.imgHome {
+  object-fit: cover;
+    height: 50%;
+    width: 50%;
+    display: flex;
+} 

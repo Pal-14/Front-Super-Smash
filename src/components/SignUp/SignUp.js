@@ -19,8 +19,6 @@ export default function SignUp(props) {
     setter(e.target.value);
   };
 
-  
-
   async function handleSubmit(event) {
     if (
       !userName ||
@@ -41,7 +39,7 @@ export default function SignUp(props) {
       confirmPassword,
     };
     let signUp = await service.signup(body);
-    console.log(signUp.data.success);
+
     if (signUp.data.token) {
       navigate("/actu");
       setUserName("");
@@ -52,13 +50,12 @@ export default function SignUp(props) {
       setConfirmPassword("");
       localStorage.setItem("jwt", signUp.data.token);
       props.setIsLoggedIn(true);
-      return (null)
+      return null;
     } else {
       setError(signUp.data.message);
     }
   }
   return (
-    
     <div>
       <h3 style={{ color: "red", textAlign: "center" }}>
         {error} {message}

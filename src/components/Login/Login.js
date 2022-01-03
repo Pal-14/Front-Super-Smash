@@ -8,7 +8,7 @@ export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [message, setMessage] = "";
+  /* const [message, setMessage] = ""; */ // pas encore utilisé
 
   const onChange = (e, setter) => {
     setter(e.target.value);
@@ -27,7 +27,6 @@ export default function Login(props) {
         setEmail("");
         localStorage.setItem("jwt", logIn.data.token);
         props.setIsLoggedIn(true);
-        console.log("message de logIn", logIn);
       } else {
         setError(logIn.data.message);
       }
@@ -36,11 +35,10 @@ export default function Login(props) {
 
   return (
     <div>
-      <h3 style={{color:"red",textAlign:"center"}}>
+      <h3 style={{ color: "red", textAlign: "center" }}>
         {" "}
         {error}
-        {message}
-      </h3>
+       </h3>
       <div className="form">
         <input
           onChange={(e) => onChange(e, setEmail)}

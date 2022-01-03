@@ -11,6 +11,10 @@
   z-index: 1;
 }
 
+.logPadding{
+  padding: 0 20px;
+}
+
 
 a {
   align-items: center;
@@ -46,6 +50,15 @@ a.active {
   object-fit: cover;
   border-radius: 20px/20px;
 }
+
+.userNameBg {
+  background-color: black;
+  height: 100%;
+  padding:0 20px ;
+  display: flex;
+  align-items: center;
+}
+
 /* .fixed {
   width: 100%;
   top:0;

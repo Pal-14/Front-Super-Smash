@@ -12,7 +12,6 @@ export default function Upload(props) {
   const onFileChange = useCallback(
     (e) => {
       let fileTypeCheck = e.target.files[0].type;
-      console.log(fileTypeCheck, "input value");
 
       if (
         fileTypeCheck !== "image/png" &&
@@ -33,15 +32,11 @@ export default function Upload(props) {
   );
 
   async function SubmitFileData(e) {
-    let authorProfilePicture = props.user?.data?.data?.pictureUrl.at(-1)
-    console.log(authorProfilePicture,'nanananinana');
-    console.log(selectedImage);
-    formData.append("authorProfilePicture",authorProfilePicture)
-    console.log(formData,'looooog de farmadata');
+    let authorProfilePicture = props.user?.data?.data?.pictureUrl.at(-1);
+    formData.append("authorProfilePicture", authorProfilePicture);
 
     if (selectedImage !== "") {
       let docsSubmitted = await service.editUserPic(formData);
-      console.log(docsSubmitted, "log de docsSubmitted");
       setMessage(docsSubmitted.data.message);
       if (docsSubmitted.data.success) {
         window.location.reload(true);

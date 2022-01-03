@@ -2,19 +2,17 @@ import "./App.css";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
+
 import service from "./services";
 
-import Log from "./components/Log/Log"
-import AllUsers from "./components/AllUsers/AllUsers";
+import Log from "./components/Log/Log";
 import Navbarpp from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import HomePage from "./components/HomePage/HomePage";
 import News from "./components/News/News";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import LogOut from "./components/Log/LogOut";
-import Profil from "./components/Profile/Profil";
 import UserInfo from "./components/Profile/UserInfo";
-
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -28,8 +26,6 @@ function App() {
 
   //actualisation de l'affichage
   useEffect(() => {
-    console.log(user,'user');
-    console.log("test");
     if (user?.data?.success) {
       setIsLoggedIn(true);
     } else {
@@ -37,26 +33,64 @@ function App() {
     }
   }, [user]);
 
-  useEffect(() => {
-    console.log("Connecté", isLoggedIn);
-  }, [isLoggedIn]);
+  useEffect(() => {}, [isLoggedIn]);
 
   return (
     <div className="App">
-      <Navbarpp className="fixe" user={user}  isLoggedIn={isLoggedIn} />
+      <Navbarpp className="fixe" user={user} isLoggedIn={isLoggedIn} />
 
       <Routes>
-        <Route path="/" element={<HomePage user={user} setUser={setUser} setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>}/>
-        <Route path="/log"element={<Log user={user} setUser={setUser} setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />}/>
-        <Route path="/quizz" element={<AllUsers />}/>
+        <Route
+          path="/"
+          element={
+            <HomePage
+              user={user}
+              setUser={setUser}
+              setIsLoggedIn={setIsLoggedIn}
+              isLoggedIn={isLoggedIn}
+            />
+          }
+        />
+        <Route
+          path="/log"
+          element={
+            <Log
+              user={user}
+              setUser={setUser}
+              setIsLoggedIn={setIsLoggedIn}
+              isLoggedIn={isLoggedIn}
+            />
+          }
+        />
         <Route path="/forgot-password" element={<ForgotPassword />}></Route>
-        <Route path="/shop" element={<AllUsers />}></Route>
-        <Route path="/actu" element={ <News user={user} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}/>
-        <Route path="/profil" element={ <Profil user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}>
-          <Route path="/profil/mes-infos" element={<UserInfo user={user}/>}/>
-          <Route path="/profil/mon-profil" element={<AllUsers/>}/>
-        </Route>
-        <Route path="/deconnexion" element={<LogOut setUser={setUser} setIsLoggedIn={setIsLoggedIn} />}/>
+
+        <Route
+          path="/actu"
+          element={
+            <News
+              user={user}
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+            />
+          }
+        />
+
+        <Route
+          path="/profil"
+          element={
+            <UserInfo
+              user={user}
+              setUser={setUser}
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+            />
+          }
+        ></Route>
+
+        <Route
+          path="/deconnexion"
+          element={<LogOut setUser={setUser} setIsLoggedIn={setIsLoggedIn} />}
+        />
       </Routes>
 
       <Footer />

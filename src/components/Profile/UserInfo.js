@@ -10,12 +10,6 @@ export default function UserInfo(props) {
   const [error, setError] = useState("");
 
   const user = props.user?.data;
-  console.log(user, "user dans userinfo");
-
-/*   const pictureArray = props.user?.data?.data?.pictureUrl;
-  const lastPicture = pictureArray?.at(-1); */
-  /* console.log(lastPicture, "last");
-  console.log(pictureArray,'picarray'); */
 
   const onChange = (e, setter) => {
     setter(e.target.value);
@@ -68,7 +62,7 @@ export default function UserInfo(props) {
 
           <div className="col-2">
             <p>
-              <span>Descritption:</span> {user?.data.description}
+              <span>Description:</span> {user?.data.description}
             </p>{" "}
             <input
               maxLength={140}

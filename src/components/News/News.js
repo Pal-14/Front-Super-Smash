@@ -12,14 +12,12 @@ export default function News(props) {
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  
-  let authorProfilePicture = props.user?.data?.data?.pictureUrl.at(-1); 
-  console.log(authorProfilePicture,'profil pic');
 
-/*   const pictureArray = props.user?.data?.data?.pictureUrl;
-  const lastPicture = pictureArray?.at(-1) */;
+  let authorProfilePicture = props.user?.data?.data?.pictureUrl.at(-1);
 
-  let Url = "http://localhost:5000/get-pic-profil/";
+  /*   const pictureArray = props.user?.data?.data?.pictureUrl;
+  const lastPicture = pictureArray?.at(-1) */ let Url =
+    "http://localhost:5000/get-pic-profil/";
 
   let navigate = useNavigate();
 
@@ -29,23 +27,28 @@ export default function News(props) {
       .then((response) => setUserPostStorage(response.data));
   }, []);
 
-    const setPosts = () => {
+  const setPosts = () => {
     setLoading(true);
-      service.displayAllPost().then((postsFromDb) => {
-        setUserPostStorage(postsFromDb.data);
-        setLoading(false);
-      });
+    service.displayAllPost().then((postsFromDb) => {
+      setUserPostStorage(postsFromDb.data);
+      setLoading(false);
+    });
   };
 
-  useEffect(setPosts,[]);
+  useEffect(setPosts, []);
 
+  async function handleClickLike(id) {
+    let post = id;
+    let body = {
+      post,
+    };
 
-  function handleClickLike(id) {
-    let post =id 
-    service.setLike({post: id, post})
-    .then(()=> {
-      setPosts();
-    });
+    let clickLikeIsGood = await service.setLike(body);
+
+    setPosts();
+    if (clickLikeIsGood.data.success) {
+      alert("Votre like à bien été prit en compte");
+    }
   }
 
   const onChange = (e, setter) => {
@@ -53,7 +56,7 @@ export default function News(props) {
   };
 
   async function handleSubmitPost() {
-    console.log(userPostStorage, "userPostStorage");
+
     let body = {
       title,
       content,
@@ -69,8 +72,8 @@ export default function News(props) {
     <div className="main">
       <div className="row">
         <div className="titleFeed">
-          <h4 classname="titleh1">Accueil</h4>
-          <h1 classname="titleh4">Bienvenue au Pays</h1>
+          <h4 className="titleh1">Accueil</h4>
+          <h1 className="titleh4">Bienvenue au Pays</h1>
         </div>
       </div>
 
@@ -105,8 +108,14 @@ export default function News(props) {
               <div className="cardPartOne">
                 <div className="imgProfil">
                   {" "}
-                  { post.authorProfilePicture ?  
-                  <img className="imgTwo" src={`${Url}${post.authorProfilePicture}`} /> :<img className="imgTwo" src={imgDefault}></img>}
+                  {post.authorProfilePicture ? (
+                    <img
+                      className="imgTwo"
+                      src={`${Url}${post.authorProfilePicture}`}
+                    />
+                  ) : (
+                    <img className="imgTwo" src={imgDefault}></img>
+                  )}
                   <span>{post.author}</span>
                 </div>
 
@@ -119,7 +128,6 @@ export default function News(props) {
                     {" "}
                     {/* {lepost.date} */}Le: {post.date}.
                   </p>
-                 
                 </div>
 
                 {/* mettre la date dans la V2 */}
@@ -128,11 +136,16 @@ export default function News(props) {
               <div className="cardPartTwo">
                 <p></p>
                 <p>{post.content}</p>
-                <p className="nbLike">Vous avez {setPosts} Likes </p>
+                <p className="nbLike">Vous avez {post.likes.length}Likes </p>
               </div>
 
               <div className="cardPartThree">
-                <button className="commentButton"   onClick={handleClickLike}>A</button>
+                <button
+                  className="commentButton"
+                  onClick={() => handleClickLike(post._id)}
+                >
+                  A
+                </button>
 
                 <p className="spaceTextButton">Press A to Like</p>
                 <button
