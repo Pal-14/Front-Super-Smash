@@ -28,12 +28,7 @@
 .titleh4 {
   color: white;
   font-weight: bolder;
-  font-size: 25px;
-  height: 89px;
-  position: absolute;
-  top: 50%;
-  left: 40%;
-  width: 20%;
+  letter-spacing: 1px;
 }
 h2 {
   font-size: 40px;
@@ -48,11 +43,12 @@ h2 {
   width: 100%;
   font-size: 60px;
   font: normal normal bold 50px/60px Rubik;
+  letter-spacing: 1px;
   opacity: 1;
 }
 .imgProfil {
-  height: 100px;
-  
+  display: flex;
+  align-items: center;
 }
 .imgTwo {
   border-radius: 50px;
@@ -63,14 +59,11 @@ h2 {
 }
 .cardFeed {
   background-color: rgb(242, 242, 242);
-  width: 800px;
+  width: 700px;
   height: auto;
   padding: 2%;
   margin-top: 30px;
   border-radius: 5px;
-  position: relative;
-  right: -180px;
-  top: 0px;
 }
 .cardPartOne {
   display: flex;
@@ -87,7 +80,18 @@ span {
   color: #e70012;
   text-transform: uppercase;
   opacity: 1;
-  padding-right: 5px;
+  padding-left: 10px;
+  letter-spacing: 3px;
+}
+h3 {
+  display: flex;
+  align-items: center;
+  font: normal normal bold 20px/37px Rubik;
+  letter-spacing: 0.7px;
+  color: #e70012;
+  text-transform: uppercase;
+  opacity: 1;
+  letter-spacing: 3px;
 }
 .cardPartTwo {
   display: flex;
@@ -128,13 +132,11 @@ span {
 }
 p {
   font: normal normal normal 20px/37px Rubik;
-  letter-spacing: 0px;
+  letter-spacing: 1px;
   color: #626262;
   opacity: 1;
 }
 .newPost {
-  height: 150px;
-  width: 400px;
   resize: none;
   display: flex;
   margin: 20px;
@@ -142,13 +144,9 @@ p {
   border-radius: 10px/20px;
   font-size: 20px;
   font-family: normal normal normal 20px/37px Rubik;
+  overflow: auto;
 }
 
-/* .newPost:focus {
-  height: 100px;
-  width: 400px;
-  border-radius: 10px/20px;
-} */
 .addPost {
   display: flex;
   flex-direction: row;

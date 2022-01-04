@@ -5,7 +5,7 @@
   flex-direction: column;
   border: 2px solid black;
   width: 300px;
-  height:auto;
+  height: auto;
   margin-top: 5px;
   border-radius: 100px/20px;
   background-color: #e70012;
@@ -35,4 +35,6 @@ button {
   font-size: 20px;
   cursor: pointer;
 }
-
+.containerLog {
+  height: 100vh;
+}

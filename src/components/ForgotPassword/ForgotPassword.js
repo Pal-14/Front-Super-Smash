@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router";
-import service from "../../services";
+/* import { useNavigate } from "react-router"; */ // pas encore utilisé
+
 import "./ForgotPassword.css";
 
 export default function ForgotPassword(props) {
-  let navigate = useNavigate();
+/*   let navigate = useNavigate(); */ //pas encore utilisé
   const [email, setEmail] = useState("");
 /*   const [error, setError] = useState("");
   const [message, setMessage] = ""; */ // pas encore utilisé
@@ -15,7 +15,7 @@ export default function ForgotPassword(props) {
 
   const disabled = email === "";
 
-  async function handleSubmit(e) {
+  /* async function handleSubmit(e) {
     if (email !== "") {
       let body = {
         email: email,
@@ -26,11 +26,11 @@ export default function ForgotPassword(props) {
         setEmail("");
         localStorage.setItem("jwt", logIn.data.token);
         props.setIsLoggedIn(true);
-      } else {
-       /*  setMessage(logIn.data.message); */ //pas encore utilisé
+      } else { 
+         setMessage(logIn.data.message); //pas encore utilisé
       }
     }
-  }
+  }*/
 
   return (
     <div className="containerForm">
@@ -51,7 +51,7 @@ export default function ForgotPassword(props) {
           disabled={disabled}
           className="buttonCenter"
           type="submit"
-          onClick={handleSubmit}
+         /*  onClick={handleSubmit} */
         >
           Récupérer
         </button>

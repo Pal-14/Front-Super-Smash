@@ -28,7 +28,7 @@ export default function SignUp(props) {
       !password ||
       !confirmPassword
     ) {
-      alert("il en manque");
+      alert("Veuillez remplir tout les champs pour continuer votre Incription !");
     }
     let body = {
       userName,

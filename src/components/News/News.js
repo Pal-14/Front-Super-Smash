@@ -3,7 +3,7 @@ import "./News.css";
 import imgDefault from "../../assets/icons8-utilisateur.gif";
 
 import service from "../../services";
-import { useNavigate } from "react-router";
+
 
 export default function News(props) {
   const [userPostStorage, setUserPostStorage] = useState([]);
@@ -19,8 +19,6 @@ export default function News(props) {
   const lastPicture = pictureArray?.at(-1) */ let Url =
     "http://localhost:5000/get-pic-profil/";
 
-  let navigate = useNavigate();
-
   useEffect(() => {
     service
       .displayAllPost()
@@ -35,7 +33,7 @@ export default function News(props) {
     });
   };
 
-  useEffect(setPosts, []);
+  useEffect(setPosts, [loading]);
 
   async function handleClickLike(id) {
     let post = id;
@@ -46,8 +44,7 @@ export default function News(props) {
     let clickLikeIsGood = await service.setLike(body);
 
     setPosts();
-    if (clickLikeIsGood.data.success) {
-      alert("Votre like à bien été prit en compte");
+    if (clickLikeIsGood.data === "Vous avez liké") {
     }
   }
 
@@ -56,7 +53,6 @@ export default function News(props) {
   };
 
   async function handleSubmitPost() {
-
     let body = {
       title,
       content,
@@ -110,33 +106,31 @@ export default function News(props) {
                   {" "}
                   {post.authorProfilePicture ? (
                     <img
+                    alt="profil"
                       className="imgTwo"
                       src={`${Url}${post.authorProfilePicture}`}
                     />
                   ) : (
-                    <img className="imgTwo" src={imgDefault}></img>
+                    <img 
+                    alt="profil"
+                    className="imgTwo" src={imgDefault}/>
                   )}
                   <span>{post.author}</span>
                 </div>
 
-                <p>
-                  <span>{post.title}</span>
+                
+                  <h3>{post.title}</h3>
                   <br />
-                </p>
+                
                 <div>
-                  <p>
-                    {" "}
-                    {/* {lepost.date} */}Le: {post.date}.
-                  </p>
+                  <p>Le: {post.date}.</p> <p>à: {post.time}.</p>
                 </div>
-
-                {/* mettre la date dans la V2 */}
               </div>
 
               <div className="cardPartTwo">
                 <p></p>
                 <p>{post.content}</p>
-                <p className="nbLike">Vous avez {post.likes.length}Likes </p>
+                <p className="nbLike">Vous avez {post.likes.length} Likes </p>
               </div>
 
               <div className="cardPartThree">

@@ -9,7 +9,7 @@ function LogOut(props) {
     localStorage.removeItem("jwt");
     props.setIsLoggedIn(false);
     navigate("/");
-  }, []);
+  }, );
 
   return <></>;
 }
