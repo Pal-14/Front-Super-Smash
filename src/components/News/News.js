@@ -3,7 +3,7 @@ import "./News.css";
 import imgDefault from "../../assets/icons8-utilisateur.gif";
 
 import service from "../../services";
-
+import { useNavigate } from "react-router";
 
 export default function News(props) {
   const [userPostStorage, setUserPostStorage] = useState([]);
@@ -19,6 +19,8 @@ export default function News(props) {
   const lastPicture = pictureArray?.at(-1) */ let Url =
     "http://localhost:5000/get-pic-profil/";
 
+  let navigate = useNavigate();
+
   useEffect(() => {
     service
       .displayAllPost()
@@ -33,7 +35,7 @@ export default function News(props) {
     });
   };
 
-  useEffect(setPosts, [loading]);
+  useEffect(setPosts, []);
 
   async function handleClickLike(id) {
     let post = id;
@@ -42,6 +44,7 @@ export default function News(props) {
     };
 
     let clickLikeIsGood = await service.setLike(body);
+    console.log(clickLikeIsGood);
 
     setPosts();
     if (clickLikeIsGood.data === "Vous avez liké") {
@@ -106,22 +109,19 @@ export default function News(props) {
                   {" "}
                   {post.authorProfilePicture ? (
                     <img
-                    alt="profil"
                       className="imgTwo"
                       src={`${Url}${post.authorProfilePicture}`}
                     />
                   ) : (
-                    <img 
-                    alt="profil"
-                    className="imgTwo" src={imgDefault}/>
+                    <img className="imgTwo" src={imgDefault}></img>
                   )}
                   <span>{post.author}</span>
                 </div>
 
-                
-                  <h3>{post.title}</h3>
+                <p>
+                  <span>{post.title}</span>
                   <br />
-                
+                </p>
                 <div>
                   <p>Le: {post.date}.</p> <p>à: {post.time}.</p>
                 </div>

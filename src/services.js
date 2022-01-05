@@ -81,7 +81,7 @@ export default service;
     (response) => {
       let { config, data, status, statusText } = response;
       let { method } = config;
-     /*  console.log("");
+      console.log("");
       console.log("\\\\\\\\");
       console.log(
         `RECEIVED [${method.toUpperCase()}] RESPONSE FROM BACKEND : ${
@@ -92,13 +92,13 @@ export default service;
         `Data of type : ${typeof data} | status ${status} ${statusText}`
       );
       console.log("\\\\\\\\");
-      console.log(""); */
+      console.log(""); 
       return response;
     },
     (err) => {
       let { config, data, status, statusText } = err.response;
       let { method } = config;
-    /*   console.log("");
+       console.log("");
       console.log("\\\\\\\\");
       console.log(
         `RECEIVED [${method.toUpperCase()}] RESPONSE FROM BACKEND : ${
@@ -109,7 +109,7 @@ export default service;
         `Data of type : ${typeof data} | status ${status} ${statusText}`
       );
       console.log("\\\\\\\\");
-      console.log(""); */
+      console.log(""); 
       return err.response;
     }
   );

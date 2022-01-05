@@ -7,7 +7,7 @@ import "./UserInfo.css";
 
 export default function UserInfo(props) {
   const [description, setDescription] = useState("");
-
+  const [error, setError] = useState("");
 
   const user = props.user?.data;
 
@@ -37,11 +37,10 @@ export default function UserInfo(props) {
                 <img
                   className="profilImg"
                   src={`${Url}${props.user?.data?.data?.pictureUrl.at(-1)}`}
-                  alt="Photo1"
+                  alt="Photo"
                 />
               ) : (
-                <img 
-                alt="photo3"className="profilImg" src={imgDefault} />
+                <img className="profilImg" src={imgDefault} />
               )}{" "}
               <Upload {...props} />
             </div>
