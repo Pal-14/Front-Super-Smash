@@ -118,19 +118,22 @@ export default function News(props) {
                   <span>{post.author}</span>
                 </div>
 
-                <p>
-                  <span>{post.title}</span>
-                  <br />
-                </p>
-                <div>
+                <div className="dateTimePost">
                   <p>Le: {post.date}.</p> <p>à: {post.time}.</p>
                 </div>
+              </div>
+
+              <div>
+                <h3>{post.title}</h3>
+                <br />
               </div>
 
               <div className="cardPartTwo">
                 <p></p>
                 <p>{post.content}</p>
-                <p className="nbLike">Vous avez {post.likes.length} Likes </p>
+                <div className="boxLike">
+                  <p className="nbLike">Vous avez {post.likes.length} Like(s) </p>
+                </div>
               </div>
 
               <div className="cardPartThree">
